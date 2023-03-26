@@ -3,6 +3,14 @@ import numpy as np
 from cochleagram import cochleagram
 
 def lif_coding(signal, time_constant, threshold):
+    """Leaky integrate-and-fire coding of a signal.
+        Parameters:
+            signal (np.ndarray): The signal to be encoded.
+            time_constant (float): The time constant of the leaky integrate-and-fire neuron.
+            threshold (float): The threshold of the leaky integrate-and-fire neuron.
+        Returns:
+            np.ndarray: The spike train.
+    """
     # Initialize the spike train.
     spike_train = np.zeros(len(signal))
 
@@ -13,9 +21,9 @@ def lif_coding(signal, time_constant, threshold):
     membrane_potential[0] = signal[0,0]
 
     # Iterate through the time steps.
-    for t in range(1,signal.shape[1]):
+    for t in range(1, len(signal)):
         # Update the membrane potential.
-        membrane_potential[t+1] = membrane_potential[t-1]*np.exp(-1/time_constant) + signal[:,t-1].sum()
+        membrane_potential[t] = membrane_potential[t-1]*np.exp(-1/time_constant) + signal[:,t-1].sum()
 
         # Update the leaky integrate-and-fire neuron.
         # leaky_integrate_and_fire_neuron[0] = membrane_potential[t] / time_constant

@@ -1295,28 +1295,28 @@ def cochleagram(
         return sb_out
 
 
-# Compute the cochleagram.
-feat = cochleagram(
-    librosa.load("audio/fold1/193698-2-0-140.wav", sr=16000)[0],
-    n=128,
-    sr=16000,
-    low_lim=50,
-    hi_lim=20000,
-    sample_factor=2,
-    padding_size=None,
-    downsample=2,
-    nonlinearity=None,
-    fft_mode="auto",
-    ret_mode="envs",
-    strict=True,
-)
-feat = np.flipud(feat)
-# Plot the cochleagram.
-plt.figure(figsize=(10, 4))
-plt.imshow(
-    feat, aspect="auto", cmap="magma", origin="lower", interpolation="nearest"
-)
-plt.colorbar(format="%+2.0f dB")
-plt.title("Cochleagram")
-plt.tight_layout()
-plt.show()
+# # Compute the cochleagram.
+# feat = cochleagram(
+#     librosa.load("audio/fold1/193698-2-0-140.wav", sr=1000)[0],
+#     n=8,
+#     sr=1000,
+#     low_lim=10,
+#     hi_lim=20000,
+#     sample_factor=2,
+#     padding_size=None,
+#     downsample=2,
+#     nonlinearity=None,
+#     fft_mode="auto",
+#     ret_mode="envs",
+#     strict=True,
+# )
+# feat = np.flipud(feat)
+# # Plot the cochleagram.
+# plt.figure(figsize=(10, 4))
+# plt.imshow(
+#     feat, aspect="auto", cmap="magma", origin="lower", interpolation="nearest"
+# )
+# plt.colorbar(format="%+2.0f dB")
+# plt.title("Cochleagram")
+# plt.tight_layout()
+# plt.show()
